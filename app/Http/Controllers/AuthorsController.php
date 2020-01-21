@@ -36,11 +36,9 @@ class AuthorsController extends Controller
     }
 
     public function update(Request $request){
-        $author = Author::findOrFail($request->id);
-        $author->name = $request->name;
-        $author->surname = $request->surname;
-        $author->genre = $request->genre;
-        $author->save();
+        $id = $request->id;
+        $author = Author::findOrFail($id);
+        $author->update($request->all());
         return redirect()->route('show_authors')->with('message', 'Author updated sucessfully');
     }
 
