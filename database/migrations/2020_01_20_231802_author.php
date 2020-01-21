@@ -11,13 +11,13 @@ class Author extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up(){
         Schema::create('authors', function(Blueprint $table){
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('surname');
-            $table->string('genre');
+            $table->bigIncrements('id')->nullable(false);
+            $table->string('name', 30)->nullable(false);
+            $table->string('surname', 30)->nullable(false);
+            $table->string('genre', 30)->nullable(false);
+            $table->timestamps();
         });
     }
 
@@ -26,8 +26,7 @@ class Author extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        //
+    public function down(){
+        Schema::dropIfExists('authors');
     }
 }

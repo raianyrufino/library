@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\Author;
+use Illuminate\Http\Request;
+
+class AuthorsController extends Controller
+{
+    public function index(){
+        $authors = Author::all();
+        return view('authors.index', compact('authors'));
+    }
+
+    public function create($id=null){
+        if(!is_null($id)){
+            $author = Author::findOrFail($id);
+            return view('authors.create', compact('id', 'author'));
+        }
+        $author = null;
+        return view('authors.create', compact('id', 'author'));
+    }
+
+    public function store(Request $request){
+        $author = Author::create($request->all());
+        $request->session()
+            ->flash(
+                'mensage',
+                "Author {$author->id} successfully created {$author->name}"
+            );
+        return redirect()->route('show_authors');
+    }
+
+    public function read($id){
+        $author = Author::findOrFail($id);
+        return view('authors.read', compact('id', 'author'));
+    }
+
+    public function update(Request $request){
+        $author = Author::findOrFail($request->id);
+        $author->name = $request->name;
+        $author->surname = $request->surname;
+        $author->genre = $request->genre;
+        $author->save();
+        return redirect()->route('show_authors')->with('message', 'Author updated sucessfully');
+    }
+
+    public function delete($id){
+        $author = Author::findOrFail($id);
+        $author->delete();
+        return redirect()->route('show_authors')->with('alert-success','Author hasbeen deleted!');
+    }
+}
