@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class AuthorsController extends Controller
 {
     public function index(){
-        $authors = Author::all();
+        $authors = Author::all()->sortBy('name');
         return view('authors.index', compact('authors'));
     }
 
