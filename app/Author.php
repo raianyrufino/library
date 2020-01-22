@@ -14,8 +14,5 @@ class Author extends Model{
     public function books(){
         return $this->hasMany(Book::class);
     }
-    
 
-    # pra o author->books funcionar, falta aquela relação aqui de author hasmany books
-    # faz, terminar diz
 }
