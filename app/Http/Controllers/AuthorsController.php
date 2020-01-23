@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Author;
+use App\{Author, Book};
 use Illuminate\Http\Request;
 
 class AuthorsController extends Controller
 {
+    
     public function index(){
         $authors = Author::all()->sortBy('name');
         return view('authors.index', compact('authors'));
-    }
+    } 
 
     public function create($id=null){
         if(!is_null($id)){
@@ -46,5 +47,12 @@ class AuthorsController extends Controller
         $author = Author::findOrFail($id);
         $author->delete();
         return redirect()->route('show_authors')->with('alert-success','Author hasbeen deleted!');
+    }
+
+    public function books($id){
+        $author = Author::findOrFail($id);
+        $books = $author->books;
+
+        return view('authors.readBooks', compact('authors','books'));
     }
 }

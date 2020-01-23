@@ -11,7 +11,9 @@
 </div>
 @endif
 
-<a href="{{ route('form_create_author') }}" class="btn btn-dark mb-2">Create</a>
+<a class="btn btn-primary mb-2" href="{{ route('show_library') }}"> Back Library</a>
+<a href="{{ route('form_create_author') }}" class="btn btn-dark mb-2">Create Author</a>
+
 
 <ul class="list-group">
     
@@ -27,9 +29,10 @@
             </button>
         </form>
         <a href="{{ route('form_create_author', $author->id)  }}" class="btn btn-primary">Update</a>
-        <a href="{{ route('show_author', $author->id)  }}" class="btn btn-primary">View</a>
-    </li>
+        <a href="{{ route('show_books_author') }}" class="btn btn-primary">View Books</a> 
+        <a href="{{ route('show_author', $author->id)  }}" class="btn btn-primary">View Author Details</a>
 
+    </li>
     @endforeach
 </ul>
 @endsection

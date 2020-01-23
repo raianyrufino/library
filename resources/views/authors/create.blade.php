@@ -23,6 +23,10 @@
             <label for="nome">Genre</label>
             <input type="text" class="form-control" value="{{$author ? $author->genre : '' }}" name="genre" id="genre">
         </div>
+
+        <a class="btn btn-primary" href="{{ route('show_books') }}"> Back</a>
         <button class="btn btn-primary">Create</button>
     </form>
+
+    
 @endsection
