@@ -44,7 +44,7 @@
 
     <div class="row">
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('show_book') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('show_books') }}"> Back</a>
         </div>
     </div>
 @endsection

@@ -5,7 +5,7 @@
 @endsection
 
 @section('conteudo')
-    <form method="POST"  action="{{ $book ? '/books/update' :'/books/save' }}">
+    <form method="POST"  action="{{ $book ? '/library/books/update' :'/library/books/save' }}">
         @csrf
         <div class="form-group">
 

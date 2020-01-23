@@ -5,7 +5,7 @@
 @endsection
 
 @section('conteudo')
-    <form action="{{ route('books/update',$book->id) }}" method="POST">
+    <form action="{{ route('library/books/update',$book->id) }}" method="POST">
     @csrf
     @method('PUT')
 

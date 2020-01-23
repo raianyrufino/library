@@ -20,7 +20,7 @@
     @foreach($authors as $author)
     <li class="list-group-item d-flex justify-content-between align-items-center">
        <b> {{ $author->name }} {{ $author->surname }} </b>
-        <form method="post" action="/authors/{{ $author->id }}"
+        <form method="post" action="/library/authors/{{ $author->id }}"
               onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($author->name) }}?')">
             @csrf
             @method('DELETE')

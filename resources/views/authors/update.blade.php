@@ -5,7 +5,7 @@
 @endsection
 
 @section('conteudo')
-    <form action="{{ route('authors/update',$author->id) }}" method="POST">
+    <form action="{{ route('library/authors/update',$author->id) }}" method="POST">
     @csrf
     @method('PUT')
 
