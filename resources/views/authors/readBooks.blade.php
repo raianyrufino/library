@@ -20,7 +20,7 @@
     @foreach($books as $book)
     <li class="list-group-item d-flex justify-content-between align-items-center">
        <b> {{ $book->title }} </b>
-        <form method="post" action="/booksAuthor/{{ $author->id }}"
+        <form method="post" action="/Library/booksAuthor/{{ $author->id }}"
               onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($book->title) }}?')">
             @csrf
             @method('DELETE')

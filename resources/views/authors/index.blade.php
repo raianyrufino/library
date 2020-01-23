@@ -29,7 +29,7 @@
             </button>
         </form>
         <a href="{{ route('form_create_author', $author->id)  }}" class="btn btn-primary">Update</a>
-        <a href="{{ route('show_books_author') }}" class="btn btn-primary">View Books</a> 
+        <a href="{{ route('show_books_author', $author->id) }}" class="btn btn-primary">View Books</a> 
         <a href="{{ route('show_author', $author->id)  }}" class="btn btn-primary">View Author Details</a>
 
     </li>

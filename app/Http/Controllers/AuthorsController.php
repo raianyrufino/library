@@ -53,6 +53,6 @@ class AuthorsController extends Controller
         $author = Author::findOrFail($id);
         $books = $author->books;
 
-        return view('authors.readBooks', compact('authors','books'));
+        return view('authors.readBooks', compact('id', 'author','books'));
     }
 }
