@@ -45,6 +45,10 @@ class AuthorsController extends Controller
 
     public function delete($id){
         $author = Author::findOrFail($id);
+        $author->books->each(function (Book $book){
+            $book->delete();
+        });
+        
         $author->delete();
         return redirect()->route('show_authors')->with('alert-success','Author hasbeen deleted!');
     }
