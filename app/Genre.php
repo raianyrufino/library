@@ -6,5 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Genre extends Model
 {
-    //
+    public $timestamp = false;
+    
+    protected $fillable = ['id', 'name', 'authors_number'];
+    protected $guarded = ['id', 'name'];
+    protected $table = 'genres';
+
+    public function author(){
+        return $this->hasMany(Author::class);
+    }
+
+    public function books(){
+        return $this->hasMany(Book::class);
+    }
+
 }
