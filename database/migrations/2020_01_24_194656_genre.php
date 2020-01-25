@@ -16,7 +16,6 @@ class Genre extends Migration
         Schema::create('genres', function(Blueprint $table){
             $table->bigIncrements('id')->nullable(false);
             $table->string('name', 30)->nullable(false);
-            $table->Integer('authors_number')->nullable(false);
             $table->timestamps();
         });
     }

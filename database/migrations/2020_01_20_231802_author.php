@@ -17,6 +17,7 @@ class Author extends Migration
             $table->string('name', 30)->nullable(false);
             $table->string('surname', 30)->nullable(false);
             $table->string('genre', 30)->nullable(false);
+           // $table->Integer('genre_id')->nullable(false);
             $table->timestamps();
         });
     }

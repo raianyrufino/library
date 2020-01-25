@@ -8,7 +8,7 @@ class Genre extends Model
 {
     public $timestamp = false;
     
-    protected $fillable = ['id', 'name', 'authors_number'];
+    protected $fillable = ['id', 'name'];
     protected $guarded = ['id', 'name'];
     protected $table = 'genres';
 
