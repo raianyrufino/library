@@ -35,5 +35,12 @@ class GenresController extends Controller
         return view('genres.read', compact('id', 'genre'));
     }
 
+    public function update(Request $request){
+        $id = $request->id;
+        $genre = Genre::findOrFail($id);
+        $genre->update($request->all());
+        return redirect()->route('show_genres')->with('message', 'Genre updated sucessfully');
+    }
+
     
 }
