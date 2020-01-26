@@ -32,15 +32,30 @@ class GenresController extends Controller
 
     public function read($id){
         $genre = Genre::findOrFail($id);
-        return view('genres.read', compact('id', 'genre'));
+        //return view('genres.read', compact('id', 'genre'));
     }
 
     public function update(Request $request){
         $id = $request->id;
         $genre = Genre::findOrFail($id);
         $genre->update($request->all());
-        return redirect()->route('show_genres')->with('message', 'Genre updated sucessfully');
+        //return redirect()->route('show_genres')->with('message', 'Genre updated sucessfully');
     }
 
-    
+    public function delete($id){
+    }
+
+    public function books($id){
+        $genre = Genre::findOrFail($id);
+        $books = $genre->books;
+
+        //return view('genre.readBooks', compact('id', 'genre','books'));
+    }
+
+    public function authors($id){
+        $genre = Genre::findOrFail($id);
+        $authors = $genre->authors;
+
+        //return view('genre.readAuthors', compact('id', 'genre','authors'));
+    }
 }
