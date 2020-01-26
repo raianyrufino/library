@@ -14,7 +14,6 @@ class Book extends Model
 
     public function author(){
         return $this->belongsTo(Author::class);
-        # aqui tava com this já, voce que n colocou
     }
 
     public function genres(){
