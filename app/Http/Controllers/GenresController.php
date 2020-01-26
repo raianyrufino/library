@@ -17,6 +17,16 @@ class GenresController extends Controller
             return view('genres.create', compact('id', 'genre'));
         }
         $genre = null;
-        return view('genres.create', compact('id', 'genre'));
+        //return view('genres.create', compact('id', 'genre'));
+    }
+
+    public function store(Request $request){
+        $genre = Genre::create($request->all());
+        $request->session()
+            ->flash(
+                'message',
+                "Genre {$genre->id} successfully created {$genre->name}"
+            );
+        //return redirect()->route('show_genres');
     }
 }
