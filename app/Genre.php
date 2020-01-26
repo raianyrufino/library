@@ -13,11 +13,11 @@ class Genre extends Model
     protected $table = 'genres';
 
     public function authors(){
-        return belongsToMany(Author::class, 'genres_author', 'author_id');
+        return $this->belongsToMany(Author::class, 'genres_author', 'genre_id');
     }
 
     public function books(){
-        return belongsToMany(Book::class, 'genres_books', 'books_id');
+        return $this->belongsToMany(Book::class, 'genres_books', 'genre_id');
     }
 
    
