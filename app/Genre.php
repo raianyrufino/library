@@ -12,12 +12,14 @@ class Genre extends Model
     protected $guarded = ['id', 'name'];
     protected $table = 'genres';
 
-    public function author(){
-        return $this->hasMany(Author::class);
+    public function authors(){
+        return belongsToMany(Author::class, 'genres_author', 'author_id');
     }
 
     public function books(){
-        return $this->hasMany(Book::class);
+        return belongsToMany(Book::class, 'genres_books', 'books_id');
     }
+
+   
 
 }

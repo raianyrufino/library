@@ -15,4 +15,7 @@ class Author extends Model{
         return $this->hasMany(Book::class);
     }
 
+    public function genres(){
+        return belongsToMany(Genre::class, 'genres_books', 'author_id');
+    }
 }
