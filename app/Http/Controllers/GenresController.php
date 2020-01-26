@@ -29,4 +29,11 @@ class GenresController extends Controller
             );
         //return redirect()->route('show_genres');
     }
+
+    public function read($id){
+        $genre = Genre::findOrFail($id);
+        return view('genres.read', compact('id', 'genre'));
+    }
+
+    
 }
