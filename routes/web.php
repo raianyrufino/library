@@ -47,7 +47,7 @@ Route::put('/library/genres/update', 'GenresController@update')->name('update_ge
 Route::get('/library/genres/read/{id?}', 'GenresController@read')->name('show_genre');
 Route::delete('/library/genres/{id?}', 'GenresController@delete')->name('delete_genre');
 
-Route::get('/library/booksGenre/{id?}', 'GenresController@books')->name('show_books_genres');
-Route::get('/library/authorsGenre/{id?}', 'GenresController@authors')->name('show_authors_genres');
+Route::get('/library/booksGenre/{id?}', 'GenresController@books')->name('show_books_genre');
+Route::get('/library/authorsGenre/{id?}', 'GenresController@authors')->name('show_authors_genre');
 
 

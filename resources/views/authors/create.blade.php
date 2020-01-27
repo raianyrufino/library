@@ -20,11 +20,15 @@
             <label for="nome">Surname</label>
             <input type="text" class="form-control" value="{{$author ? $author->surname : '' }}" name="surname" id="surname">
 
-            <label for="nome">Genre</label>
-            <input type="text" class="form-control" value="{{$author ? $author->genre : '' }}" name="genre" id="genre">
+            <label for="genre">Genres</label>
+            <select multiple name="generos[]" id="">
+                @foreach($genres as $genre)
+                    <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                @endforeach
+            </select>
         </div>
 
-        <a class="btn btn-primary" href="{{ route('show_books') }}"> Back</a>
+        <a class="btn btn-primary" href="{{ route('show_authors') }}"> Back</a>
         <button class="btn btn-primary">Create</button>
     </form>
 

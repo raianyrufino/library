@@ -15,11 +15,9 @@ class Book extends Migration
         Schema::create('books', function(Blueprint $table){
             $table->bigIncrements('id')->nullable(false);
             $table->string('title', 50)->nullable(false);
-            $table->string('genre', 30)->nullable(false);
             $table->string('about', 100);
             $table->string('edition', 4);
-            $table->Integer('author_id')->nullable(false);
-           // $table->Integer('genre_id')->nullable(false);
+            $table->Integer('author_id')->nullable(false);   
             $table->timestamps();
         });
     }

@@ -28,7 +28,7 @@
                 <i class="far fa-trash-alt"></i>
             </button>
         </form>
-        <a href="{{ route('form_create_book', $book->id)  }}" class="btn btn-primary">Update</a>
+        <a href="{{ route('form_create_book', $book->id)  }}" class="btn btn-warning">Update</a>
         <a href="{{ route('show_book', $book->id) }}" class="btn btn-primary">View</a>
     </li>
     @endforeach

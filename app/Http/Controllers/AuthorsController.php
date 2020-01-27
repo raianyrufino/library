@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\{Author, Book};
+use App\{Author, Book, Genre};
 use Illuminate\Http\Request;
 
 class AuthorsController extends Controller
@@ -13,16 +13,23 @@ class AuthorsController extends Controller
     } 
 
     public function create($id=null){
+        $genres = Genre::all();
         if(!is_null($id)){
             $author = Author::findOrFail($id);
-            return view('authors.create', compact('id', 'author'));
+            return view('authors.create', compact('id', 'author', 'genres'));
         }
         $author = null;
-        return view('authors.create', compact('id', 'author'));
+        return view('authors.create', compact('id', 'author', 'genres'));
     }
 
     public function store(Request $request){
-        $author = Author::create($request->all());
+        $generos = $request->generos;
+        
+        $author = Author::create($request->except('generos'));
+
+        foreach ($generos as $genero) {
+            $author->genres()->attach($genero);
+        }
         $request->session()
             ->flash(
                 'mensage',
@@ -39,6 +46,12 @@ class AuthorsController extends Controller
     public function update(Request $request){
         $id = $request->id;
         $author = Author::findOrFail($id);
+        $generos = $request->generos;
+        
+        foreach ($generos as $genero) {
+            $author->genres()->attach($genero);
+        }
+        
         $author->update($request->all());
         return redirect()->route('show_authors')->with('message', 'Author updated sucessfully');
     }

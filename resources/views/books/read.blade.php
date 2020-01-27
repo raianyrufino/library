@@ -25,7 +25,14 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Genre:</strong>
-                {{ $book->genre }}
+                @foreach($book->genres as $genre)
+                        <li>
+                            <ul>
+                                {{ $genre->name }}
+                            </ul>
+                        </li>
+                @endforeach
+                    
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

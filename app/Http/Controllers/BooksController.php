@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{Book, Author};
+use App\{Book, Author, Genre};
 
 class BooksController extends Controller
 {
@@ -14,17 +14,26 @@ class BooksController extends Controller
     } 
 
     public function create($id=null){
+        $genres = Genre::all();
         $authors = Author::all();
         if(!is_null($id)){
             $book = Book::findOrFail($id);
-            return view('books.create', compact('id', 'book', 'authors'));
+            return view('books.create', compact('id', 'book', 'authors', 'genres'));
         }
         $book = null;
-        return view('books.create', compact('id', 'book', 'authors'));
+        return view('books.create', compact('id', 'book', 'authors', 'genres'));
     }
 
     public function store(Request $request){
-        $book = Book::create($request->all());
+        $generos = $request->generos;        
+        $book = Book::create($request->except('generos'));
+       
+        if ($generos) {
+            foreach ($generos as $genero) {
+                $book->genres()->attach($genero);
+            }
+        }
+        
         $request->session()
             ->flash(
                 'mensage',
@@ -41,9 +50,20 @@ class BooksController extends Controller
         return view('books.read', compact('id', 'book'));
     }
 
-    public function update(Request $request){
+    public function update(Request $request) 
+    {
         $id = $request->id;
         $book = Book::findOrFail($id);
+        $generos = $request->generos;
+        
+        if ($generos) {
+            $book->genres()->detach();
+            
+            foreach ($generos as $genero) {
+                $book->genres()->attach($genero);
+            }
+        }
+
         $book->update($request->all());
         # aqui preferia mandar pro view de lsitagem de livros, com a mensagem, algo assim
         return redirect()->route('show_books')->with('message', "Book: $book->name was updated sucessfully");

@@ -15,7 +15,7 @@ class GenreRelationBook extends Migration
     {
         Schema::create('genres_books', function(Blueprint $table){
             $table->bigIncrements('id')->nullable(false);
-            $table->Integer('books_id')->nullable(false);
+            $table->Integer('book_id')->nullable(false);
             $table->Integer('genre_id')->nullable(false);
             $table->timestamps();
         });

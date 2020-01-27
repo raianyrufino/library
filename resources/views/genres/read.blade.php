@@ -13,47 +13,32 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Id:</strong>
-                {{ $author->id }}
+                {{ $genre->id }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Name:</strong>
-                {{ $author->name }}
+                <strong>Title:</strong>
+                {{ $genre->name }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Surname:</strong>
-                {{ $author->surname }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Genre:</strong>
-                @foreach($author->genres as $genre)
-                    <li>
-                        <ul>
-                            {{ $genre->name }}
-                        </ul>
-                    </li>
-                @endforeach
+                <strong>Authors Number:</strong>
+                {{ $genre->authors->count() }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Books Number:</strong>
-                {{ $author->books->count() }} 
+                {{ $genre->books->count() }}
             </div>
         </div>
     </div>
 
-    
-
-
     <div class="row">
         <div class="pull-right">
-            <a class="btn btn-primary mb-2" href="{{ route('show_authors') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('show_genres') }}"> Back</a>
         </div>
     </div>
 @endsection

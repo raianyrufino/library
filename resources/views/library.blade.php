@@ -21,6 +21,7 @@
 <div>
 <a href="{{ route('show_authors') }}" class="btn btn-dark mb-2">Show Authors</a>
 <a href="{{ route('show_books') }}" class="btn btn-dark mb-2">Show Books</a>
+<a href="{{ route('show_genres') }}" class="btn btn-dark mb-2">Show Genres</a>
 </div>
 
 @endsection

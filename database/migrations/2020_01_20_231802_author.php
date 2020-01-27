@@ -16,7 +16,7 @@ class Author extends Migration
             $table->bigIncrements('id')->nullable(false);
             $table->string('name', 30)->nullable(false);
             $table->string('surname', 30)->nullable(false);
-            $table->string('genre', 30)->nullable(false);
+            // $table->string('genre_id', 30)->nullable(false);
            // $table->Integer('genre_id')->nullable(false);
             $table->timestamps();
         });

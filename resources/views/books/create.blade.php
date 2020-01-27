@@ -17,8 +17,6 @@
             <label for="nome">Title</label>
             <input type="text" class="form-control" value="{{$book ? $book->title : '' }}" name="title" id="book">
 
-            <label for="nome">Genre</label>
-            <input type="text" class="form-control" value="{{$book ? $book->genre : '' }}" name="genre" id="genre">
 
             <label for="nome">About</label>
             <input type="text" class="form-control" value="{{$book ? $book->about : '' }}" name="about" id="about">
@@ -26,15 +24,23 @@
             <label for="nome">Edition</label>
             <input type="text" class="form-control" value="{{$book ? $book->edition : '' }}" name="edition" id="edition">
             
+            <label for="genre">Genres</label>
+            <select multiple name="generos[]" id="">
+                @foreach($genres as $genre)
+                    <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                @endforeach
+            </select>
+            
             <label for="author">Authors</label>
             <select name="author_id" id="">
                 @foreach($authors as $author)
                     <option value="{{ $author->id }}">{{ $author->name }}</option>
                 @endforeach
             </select>
+
         </div>
         
-        <a class="btn btn-primary" href="{{ route('show_authors') }}"> Back</a>
+        <a class="btn btn-primary" href="{{ route('show_books') }}"> Back</a>
         <button class="btn btn-primary">Create</button>
     </form>
 

@@ -11,16 +11,16 @@
 </div>
 @endif
 
-<a class="btn btn-primary mb-2" href="{{ route('show_library') }}"> Back Library</a>
-<a href="{{ route('form_create_author') }}" class="btn btn-dark mb-2">Create Author</a>
+<a class="btn btn-primary mb-2" href="{{ route('show_genres') }}"> Back</a>
+<a href="{{ route('form_create_author') }}" class="btn btn-dark mb-2">Create author</a>
 
 
 <ul class="list-group">
     
     @foreach($authors as $author)
     <li class="list-group-item d-flex justify-content-between align-items-center">
-       <b> {{ $author->name }} {{ $author->surname }} </b>
-        <form method="post" action="/library/authors/{{ $author->id }}"
+       <b> {{ $author->name }} </b>
+        <form method="post" action="/Library/authorsGenre/{{ $genre->id }}"
               onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($author->name) }}?')">
             @csrf
             @method('DELETE')
@@ -29,9 +29,7 @@
             </button>
         </form>
         <a href="{{ route('form_create_author', $author->id)  }}" class="btn btn-warning">Update</a>
-       
-        <a href="{{ route('show_author', $author->id)  }}" class="btn btn-primary">View Author Details</a>
-
+        <a href="{{ route('show_author', $author->id)  }}" class="btn btn-primary">View</a>
     </li>
     @endforeach
 </ul>

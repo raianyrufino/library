@@ -11,7 +11,7 @@
 </div>
 @endif
 
-<a class="btn btn-primary mb-2" href="{{ route('show_authors') }}"> Back</a>
+<a class="btn btn-primary mb-2" href="{{ route('show_genres') }}"> Back</a>
 <a href="{{ route('form_create_book') }}" class="btn btn-dark mb-2">Create Book</a>
 
 
@@ -20,7 +20,7 @@
     @foreach($books as $book)
     <li class="list-group-item d-flex justify-content-between align-items-center">
        <b> {{ $book->title }} </b>
-        <form method="post" action="/Library/booksAuthor/{{ $author->id }}"
+        <form method="post" action="/Library/booksGenre/{{ $genre->id }}"
               onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($book->title) }}?')">
             @csrf
             @method('DELETE')
