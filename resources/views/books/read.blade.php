@@ -28,7 +28,7 @@
                 @foreach($book->genres as $genre)
                         <li>
                             <ul>
-                                {{ $genre->name }}
+                                {{ $genre->name }} 
                             </ul>
                         </li>
                 @endforeach
